@@ -9,6 +9,15 @@ class Futushiki(private var board: Board<Int>, private val relations: List<Great
         board += (point to value)
     }
 
+    fun isCompleted(): Boolean =
+            board.all {(_, value) -> value > 0} && isBoardValid()
+
+    fun isBoardValid(): Boolean =
+            relations.all { (greater, smaller) ->
+                board.getValue(greater) > board.getValue(smaller)
+            }
+
+
     fun printBoard() {
         val list = board.toList()
         val cols = list.last().first.col

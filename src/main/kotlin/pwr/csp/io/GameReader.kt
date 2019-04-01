@@ -1,4 +1,7 @@
 package pwr.csp.io
 
-interface GameReader {
+import java.io.File
+
+interface GameReader<GAME> {
+    fun read(file: File): GAME
 }

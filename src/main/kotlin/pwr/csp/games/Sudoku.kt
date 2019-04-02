@@ -2,8 +2,10 @@ package pwr.csp.games
 
 import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
+import pwr.csp.printer.BoardPrinter
+import pwr.csp.printer.SudokuBoardPrinter
 
-class Sudoku(private var board: Board<List<Int>>) {
+class Sudoku(private var board: Board<List<Int>>, private val boardPrinter: BoardPrinter<List<Int>>) {
 
     fun isBoardValid(): Boolean {
         if (board.any { (_, possibleValues) -> possibleValues.isEmpty() })
@@ -27,20 +29,7 @@ class Sudoku(private var board: Board<List<Int>>) {
     }
 
     fun printBoard() {
-        val list = board.toList()
-
-        list.sortedBy { it.first }
-                .forEachIndexed { index, (boardPoint, score) ->
-                    val point = if (score.size == 1) score[0].toString() else "0"
-                    print("$point ")
-                    if (boardPoint.col == 9)
-                        println()
-                    else if (boardPoint.col % 3 == 0)
-                        print("| ")
-
-                    if (boardPoint.row in listOf('C', 'F') && boardPoint.col == 9)
-                        println("------+-------+------")
-                }
+        boardPrinter.printBoard(board)
     }
 
 

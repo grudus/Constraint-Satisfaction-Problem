@@ -1,4 +1,4 @@
-package pwr.csp.io
+package pwr.csp.reader
 
 import java.io.File
 

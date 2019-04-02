@@ -1,8 +1,8 @@
 package pwr.csp
 
 import pwr.csp.commons.BoardPoint
-import pwr.csp.io.FutushikiReader
-import pwr.csp.io.SudokuReader
+import pwr.csp.reader.FutushikiReader
+import pwr.csp.reader.SudokuReader
 import java.io.File
 
 fun main() {

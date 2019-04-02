@@ -1,9 +1,10 @@
-package pwr.csp.io
+package pwr.csp.reader
 
 import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
 import pwr.csp.games.Futushiki
 import pwr.csp.games.GreaterThanRelation
+import pwr.csp.printer.FutushikiBoardPrinter
 import java.io.File
 
 class FutushikiReader : GameReader<Futushiki> {
@@ -27,6 +28,6 @@ class FutushikiReader : GameReader<Futushiki> {
                 .groupBy({ (point, _) -> point}, { (_, value) -> value })
                 .mapValues { it.value[0] }
 
-        return Futushiki(board, relations)
+        return Futushiki(board, relations, FutushikiBoardPrinter())
     }
 }

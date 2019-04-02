@@ -1,8 +1,9 @@
-package pwr.csp.io
+package pwr.csp.reader
 
 import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
 import pwr.csp.games.Sudoku
+import pwr.csp.printer.SudokuBoardPrinter
 import java.io.File
 
 class SudokuReader : GameReader<Sudoku> {
@@ -22,6 +23,6 @@ class SudokuReader : GameReader<Sudoku> {
                 .groupBy({ (point, _) -> point}, { (_, value) -> value })
                 .mapValues { it.value[0] }
 
-        return Sudoku(board)
+        return Sudoku(board, SudokuBoardPrinter())
     }
 }

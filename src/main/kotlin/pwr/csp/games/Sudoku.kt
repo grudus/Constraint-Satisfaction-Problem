@@ -5,24 +5,17 @@ import pwr.csp.commons.BoardPoint
 import pwr.csp.printer.BoardPrinter
 
 data class Sudoku(private val board: Board<List<Int>>,
-                  private val boardPrinter: BoardPrinter<List<Int>>) : Game {
+                  private val boardPrinter: BoardPrinter<List<Int>>) : PossibleValuesGame(board, boardPrinter) {
 
-    override fun isBoardValid(): Boolean {
-        if (board.any { (_, possibleValues) -> possibleValues.isEmpty() })
-            return false
+    override fun areConstraintsMet(): Boolean =
+            board.filter { (_, possibleValues) -> possibleValues.size == 1 }
+                    .mapValues { it.value[0] }
+                    .all { (boardPoint, value) ->
+                        val peers = findPeers(boardPoint)
 
-        return board.filter { (_, possibleValues) -> possibleValues.size == 1 }
-                .mapValues { it.value[0] }
-                .all { (boardPoint, value) ->
-                    val peers = findPeers(boardPoint)
+                        return peers.none { board.getValue(it)[0] == value }
+                    }
 
-                    return peers.none { board.getValue(it)[0] == value }
-                }
-    }
-
-    override fun isCompleted(): Boolean =
-            board.all { (_, possibleValues) -> possibleValues.size == 1 }
-                    && isBoardValid()
 
     override fun update(boardPoint: BoardPoint, elem: Int): Game =
             copy(board = board + (boardPoint to listOf(elem)))
@@ -52,16 +45,6 @@ data class Sudoku(private val board: Board<List<Int>>,
 
         return this.copy(board = mutableBoard)
     }
-
-    override fun findPossibleValues(boardPoint: BoardPoint): List<Int> =
-            board.getValue(boardPoint).toList()
-
-    override fun getBoardWithPossibleValues(): Board<List<Int>> = board
-
-    override fun printBoard() {
-        boardPrinter.printBoard(board)
-    }
-
 
     private fun findPeers(boardPoint: BoardPoint): List<BoardPoint> {
         val rowColPeers = board.keys.filter { it.row == boardPoint.row || it.col == boardPoint.col }

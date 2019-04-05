@@ -3,11 +3,11 @@ package pwr.csp.games
 import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
 import pwr.csp.printer.BoardPrinter
-import pwr.csp.printer.SudokuBoardPrinter
 
-class Sudoku(private var board: Board<List<Int>>, private val boardPrinter: BoardPrinter<List<Int>>) {
+data class Sudoku(private val board: Board<List<Int>>,
+                  private val boardPrinter: BoardPrinter<List<Int>>) : Game {
 
-    fun isBoardValid(): Boolean {
+    override fun isBoardValid(): Boolean {
         if (board.any { (_, possibleValues) -> possibleValues.isEmpty() })
             return false
 
@@ -20,15 +20,45 @@ class Sudoku(private var board: Board<List<Int>>, private val boardPrinter: Boar
                 }
     }
 
-    fun isCompleted(): Boolean =
+    override fun isCompleted(): Boolean =
             board.all { (_, possibleValues) -> possibleValues.size == 1 }
                     && isBoardValid()
 
-    fun updateBoard(point: BoardPoint, value: Int) {
-        board += (point to listOf(value))
+    override fun update(boardPoint: BoardPoint, elem: Int): Game =
+            copy(board = board + (boardPoint to listOf(elem)))
+
+    override fun eliminateInconsistentValues(): Game {
+        var eliminated: Boolean
+        val mutableBoard = HashMap(board).toMutableMap()
+
+        do {
+            eliminated = false
+
+            mutableBoard.forEach { point, values ->
+                if (values.size == 1) {
+                    val value = values[0]
+                    val peers = findPeers(point)
+
+                    peers.forEach { peer ->
+                        if (mutableBoard[peer]!!.contains(value)) {
+                            eliminated = true
+                            mutableBoard[peer] = mutableBoard[peer]!! - value
+                        }
+                    }
+                }
+            }
+
+        } while (!eliminated)
+
+        return this.copy(board = mutableBoard)
     }
 
-    fun printBoard() {
+    override fun findPossibleValues(boardPoint: BoardPoint): List<Int> =
+            board.getValue(boardPoint).toList()
+
+    override fun getBoardWithPossibleValues(): Board<List<Int>> = board
+
+    override fun printBoard() {
         boardPrinter.printBoard(board)
     }
 

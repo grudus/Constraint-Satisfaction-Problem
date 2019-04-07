@@ -4,22 +4,43 @@ import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
 import pwr.csp.printer.BoardPrinter
 
-class Futushiki(private var board: Board<Int>,
-                private val relations: List<GreaterThanRelation>,
-                private val boardPrinter: BoardPrinter<Int>) {
+data class Futushiki(private var board: Board<List<Int>>,
+                     private val relations: List<GreaterThanRelation>,
+                     private val boardPrinter: BoardPrinter<List<Int>>) : PossibleValuesGame(board, boardPrinter) {
 
-    fun updateBoard(point: BoardPoint, value: Int) {
-        board += (point to value)
-    }
+    override fun update(boardPoint: BoardPoint, elem: Int): Game =
+            copy(board = board + (boardPoint to listOf(elem)))
 
-    fun isCompleted(): Boolean =
-            board.all { (_, value) -> value > 0 } && isBoardValid()
-
-    fun isBoardValid(): Boolean =
+    override fun areConstraintsMet(): Boolean =
             relationsAreValid() && boardHasUniqueValues()
 
+    override fun eliminateInconsistentValues(): Game {
+        var eliminated: Boolean
+        val mutableBoard = HashMap(board).toMutableMap()
 
-    fun printBoard() {
+        do {
+            eliminated = false
+
+            mutableBoard.forEach { point, values ->
+                if (values.size == 1) {
+                    val value = values[0]
+                    val peers = findPeers(point)
+
+                    peers.forEach { peer ->
+                        if (mutableBoard[peer]!!.contains(value)) {
+                            eliminated = true
+                            mutableBoard[peer] = mutableBoard[peer]!! - value
+                        }
+                    }
+                }
+            }
+
+        } while (!eliminated)
+
+        return this.copy(board = mutableBoard)
+    }
+
+    override fun printBoard() {
         boardPrinter.printBoard(board)
         println("\nRelacje: ")
         relations.forEach { (greater, smaller) ->
@@ -28,16 +49,25 @@ class Futushiki(private var board: Board<Int>,
     }
 
     private fun boardHasUniqueValues(): Boolean =
-            board.all { (point, value) ->
-                findPeers(point).none { board.getValue(it) == value }
-            }
+            board
+                    .filterValues { it.size == 1 }
+                    .mapValues { it.value[0] }
+                    .all { (point, value) ->
+                        findPeers(point)
+                                .map { board.getValue(it) }
+                                .filter { it.size == 1 }
+                                .map { it[0] }
+                                .none { peerValue -> peerValue == value }
+                    }
 
     private fun relationsAreValid(): Boolean =
             relations.all { (greater, smaller) ->
-                board.getValue(greater) > board.getValue(smaller)
+                if (board.getValue(greater).size == 1 || board.getValue(smaller).size == 1)
+                    board.getValue(greater)[0] > board.getValue(smaller)[0]
+                else true
             }
 
 
     private fun findPeers(boardPoint: BoardPoint): List<BoardPoint> =
-            board.keys.filter { it.row == boardPoint.row || it.col == boardPoint.col }
+            board.keys.filter { it.row == boardPoint.row || it.col == boardPoint.col } - boardPoint
 }

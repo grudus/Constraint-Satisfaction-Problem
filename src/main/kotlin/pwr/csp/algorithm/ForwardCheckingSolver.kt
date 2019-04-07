@@ -23,7 +23,7 @@ class ForwardCheckingSolver: Solver {
 
             val result = search(updatedGame, valueSelector)
 
-            if (result.isNotEmpty()) {
+            if (result.isNotEmpty() && result.all { it.isCompleted() }) {
                 return result
             }
         }

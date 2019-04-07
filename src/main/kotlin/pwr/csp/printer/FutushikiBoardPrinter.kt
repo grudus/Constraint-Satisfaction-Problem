@@ -2,11 +2,11 @@ package pwr.csp.printer
 
 import pwr.csp.commons.Board
 
-class FutushikiBoardPrinter: BoardPrinter<Int> {
+class FutushikiBoardPrinter: BoardPrinter<List<Int>> {
 
-    override fun printBoard(board: Board<Int>) {
+    override fun printBoard(board: Board<List<Int>>) {
         val list = board.toList()
-        val cols = list.last().first.col
+        val cols = Math.sqrt(list.size.toDouble()).toInt()
 
         print("  | ")
         (1..cols).forEach { print("$it ") }
@@ -15,10 +15,12 @@ class FutushikiBoardPrinter: BoardPrinter<Int> {
         println()
 
         list.sortedBy { it.first }
-                .forEachIndexed { index, (boardPoint, score) ->
+                .forEachIndexed { index, (boardPoint, possibleValues) ->
+                    val value = if (possibleValues.size == 1) possibleValues[0].toString() else "0"
+
                     if (index % cols == 0)
                         print("${boardPoint.row} | ")
-                    print("$score ")
+                    print("$value ")
                     if (boardPoint.col == cols)
                         println()
                 }

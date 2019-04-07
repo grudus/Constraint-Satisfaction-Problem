@@ -20,9 +20,11 @@ class FutushikiReader : GameReader<Futushiki> {
                 .map { row -> row.split(";").map { BoardPoint(it) } }
                 .map { GreaterThanRelation(it[1], it[0]) }
 
-        val board: Board<Int> = ('A' until 'A' + boardSize).mapIndexed { rowIndex, row ->
+        val board: Board<List<Int>> = ('A' until 'A' + boardSize).mapIndexed { rowIndex, row ->
             (1..boardSize).map { col ->
-                Pair(BoardPoint(row, col), rawBoard[rowIndex][col - 1])
+                val number = rawBoard[rowIndex][col - 1]
+                val possibleValues = if (number == 0) (1..boardSize).toList() else listOf(number)
+                Pair(BoardPoint(row, col), possibleValues)
             }
         }.flatten()
                 .groupBy({ (point, _) -> point}, { (_, value) -> value })

@@ -35,7 +35,7 @@ data class Futushiki(private var board: Board<List<Int>>,
                 }
             }
 
-        } while (!eliminated)
+        } while (eliminated)
 
         return this.copy(board = mutableBoard)
     }
@@ -62,7 +62,7 @@ data class Futushiki(private var board: Board<List<Int>>,
 
     private fun relationsAreValid(): Boolean =
             relations.all { (greater, smaller) ->
-                if (board.getValue(greater).size == 1 || board.getValue(smaller).size == 1)
+                if (board.getValue(greater).size == 1 && board.getValue(smaller).size == 1)
                     board.getValue(greater)[0] > board.getValue(smaller)[0]
                 else true
             }

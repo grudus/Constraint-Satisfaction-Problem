@@ -21,7 +21,7 @@ fun main() {
 //            MostConstrainedValueSelector()
 //    ).forEach { it.printBoard() }
 
-    val futushikiFile = File("res/test_data/futoshiki/futoshiki_4_0.txt")
+    val futushikiFile = File("res/test_data/futoshiki/futoshiki_5_4.txt")
 
     val futoshiki = FutushikiReader().read(futushikiFile)
     futoshiki.printBoard()

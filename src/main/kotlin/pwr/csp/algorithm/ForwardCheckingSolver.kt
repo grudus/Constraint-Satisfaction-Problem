@@ -6,7 +6,7 @@ import pwr.csp.games.Game
 class ForwardCheckingSolver : Solver {
 
     override fun solve(game: Game, valueSelector: ValueSelector): List<Game> {
-        return search(game, valueSelector, hashSetOf()).toList()
+        return search(game.eliminateInconsistentValues(), valueSelector, hashSetOf()).toList()
     }
 
     private fun search(game: Game, valueSelector: ValueSelector, foundSolutions: MutableSet<Game>): Set<Game> {

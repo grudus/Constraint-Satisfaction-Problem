@@ -26,7 +26,6 @@ fun main() {
     val futoshiki = FutushikiReader().read(futushikiFile)
     futoshiki.printBoard()
 
-    println("\n")
 
 
     GameSolutionsFinder.findSolutions(

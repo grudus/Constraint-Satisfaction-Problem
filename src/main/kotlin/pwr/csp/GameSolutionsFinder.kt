@@ -1,5 +1,6 @@
 package pwr.csp
 
+import pwr.csp.algorithm.SolutionDescription
 import pwr.csp.algorithm.Solver
 import pwr.csp.algorithm.heuristic.ValueSelector
 import pwr.csp.games.Game
@@ -10,7 +11,7 @@ object GameSolutionsFinder {
             game: Game,
             solver: Solver,
             valueSelector: ValueSelector
-    ): List<Game> =
+    ): SolutionDescription =
             solver.solve(game, valueSelector)
 
 }

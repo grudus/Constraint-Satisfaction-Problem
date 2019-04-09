@@ -1,6 +1,7 @@
 package pwr.csp
 
 import pwr.csp.algorithm.ForwardCheckingSolver
+import pwr.csp.algorithm.SolutionDescription
 import pwr.csp.algorithm.Solver
 import pwr.csp.algorithm.heuristic.MostConstrainedValueSelector
 import pwr.csp.algorithm.heuristic.ValueSelector
@@ -43,16 +44,17 @@ fun main(args: Array<String>) {
     val file = File(args[3])
 
     val game: Game = reader.read(file)
-    game.printBoard()
 
-    println("\n")
+    println("Results for file: $file")
+    println("Solver:  ${solver.javaClass.simpleName}")
+    println("Value selector: ${valueSelector.javaClass.simpleName}")
+    println()
 
-    val solutions: List<Game> = GameSolutionsFinder.findSolutions(
+    val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
             game,
             solver,
             valueSelector
     )
 
-    println("Found ${solutions.size} solutions:\n")
-    solutions.forEach {it.printBoard()}
+    println(solutionDescription)
 }

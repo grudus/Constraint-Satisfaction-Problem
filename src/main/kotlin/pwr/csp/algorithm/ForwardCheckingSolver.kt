@@ -7,11 +7,7 @@ import java.util.*
 class ForwardCheckingSolver : Solver {
 
     override fun solve(game: Game, valueSelector: ValueSelector): SolutionDescription {
-        val startTime = Date()
-        val result = search(game.eliminateInconsistentValues(), valueSelector, SolutionDescription())
-        val seconds = (Date().time - startTime.time) / 1000.0
-
-        return result.withExecutionTime(seconds)
+        return search(game.eliminateInconsistentValues(), valueSelector, SolutionDescription())
     }
 
     private fun search(game: Game, valueSelector: ValueSelector, solutionDescription: SolutionDescription): SolutionDescription {

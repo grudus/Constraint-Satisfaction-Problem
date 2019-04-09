@@ -12,6 +12,6 @@ object GameSolutionsFinder {
             solver: Solver,
             valueSelector: ValueSelector
     ): SolutionDescription =
-            solver.solve(game, valueSelector)
+            solver.solveAndMeasureTime(game, valueSelector)
 
 }

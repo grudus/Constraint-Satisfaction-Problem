@@ -41,7 +41,7 @@ data class Sudoku(private val board: Board<List<Int>>,
                 }
             }
 
-        } while (!eliminated)
+        } while (eliminated)
 
         return this.copy(board = mutableBoard)
     }

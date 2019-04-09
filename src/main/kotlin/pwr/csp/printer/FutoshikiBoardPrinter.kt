@@ -2,7 +2,7 @@ package pwr.csp.printer
 
 import pwr.csp.commons.Board
 
-class FutushikiBoardPrinter: BoardPrinter<List<Int>> {
+class FutoshikiBoardPrinter: BoardPrinter<List<Int>> {
 
     override fun printBoard(board: Board<List<Int>>) {
         val list = board.toList()

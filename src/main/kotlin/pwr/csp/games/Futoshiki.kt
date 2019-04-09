@@ -4,7 +4,7 @@ import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
 import pwr.csp.printer.BoardPrinter
 
-data class Futushiki(private var board: Board<List<Int>>,
+data class Futoshiki(private var board: Board<List<Int>>,
                      private val relations: List<GreaterThanRelation>,
                      private val boardPrinter: BoardPrinter<List<Int>>) : PossibleValuesGame(board, boardPrinter) {
 

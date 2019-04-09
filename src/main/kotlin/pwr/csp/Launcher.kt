@@ -8,7 +8,7 @@ import pwr.csp.algorithm.heuristic.MostConstrainedBoardPointSelector
 import pwr.csp.algorithm.heuristic.BoardPointSelector
 import pwr.csp.algorithm.heuristic.RandomBoardPointSelector
 import pwr.csp.games.Game
-import pwr.csp.reader.FutushikiReader
+import pwr.csp.reader.FutoshikiReader
 import pwr.csp.reader.GameReader
 import pwr.csp.reader.SudokuReader
 import java.io.File
@@ -16,7 +16,7 @@ import java.util.Arrays.toString
 
 private enum class GameStrategy(val reader: GameReader<out Game>) {
     SUDOKU(SudokuReader()),
-    FUTOSHIKI(FutushikiReader()),
+    FUTOSHIKI(FutoshikiReader()),
 }
 
 private enum class SolverStrategy(val solver: Solver) {

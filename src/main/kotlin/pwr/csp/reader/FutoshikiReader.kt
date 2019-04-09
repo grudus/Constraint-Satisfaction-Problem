@@ -2,14 +2,14 @@ package pwr.csp.reader
 
 import pwr.csp.commons.Board
 import pwr.csp.commons.BoardPoint
-import pwr.csp.games.Futushiki
+import pwr.csp.games.Futoshiki
 import pwr.csp.games.GreaterThanRelation
-import pwr.csp.printer.FutushikiBoardPrinter
+import pwr.csp.printer.FutoshikiBoardPrinter
 import java.io.File
 
-class FutushikiReader : GameReader<Futushiki> {
+class FutoshikiReader : GameReader<Futoshiki> {
 
-    override fun read(file: File): Futushiki {
+    override fun read(file: File): Futoshiki {
         val lines = file.readLines()
         val boardSize = lines[0].toInt()
 
@@ -30,6 +30,6 @@ class FutushikiReader : GameReader<Futushiki> {
                 .groupBy({ (point, _) -> point}, { (_, value) -> value })
                 .mapValues { it.value[0] }
 
-        return Futushiki(board, relations, FutushikiBoardPrinter())
+        return Futoshiki(board, relations, FutoshikiBoardPrinter())
     }
 }

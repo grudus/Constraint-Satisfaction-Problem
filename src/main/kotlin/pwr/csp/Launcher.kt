@@ -9,12 +9,12 @@ import pwr.csp.algorithm.heuristic.BoardPointSelector
 import pwr.csp.algorithm.heuristic.MostLimitingBoardPointSelector
 import pwr.csp.algorithm.heuristic.RandomBoardPointSelector
 import pwr.csp.games.Game
-import pwr.csp.games.PossibleValuesGame
 import pwr.csp.reader.FutoshikiReader
 import pwr.csp.reader.GameReader
 import pwr.csp.reader.SudokuReader
 import java.io.File
-import java.util.Arrays.toString
+import java.util.concurrent.Executors
+import java.util.concurrent.atomic.AtomicInteger
 
 private enum class SolverStrategy(val solver: Solver) {
     FORWARD_CHECKING(ForwardCheckingSolver()),
@@ -33,6 +33,11 @@ fun main(args: Array<String>) {
         return
     }
 
+    val numberOfTests = SolverStrategy.values().size + ValueSelectorStrategy.values().size
+
+    val executor = Executors.newFixedThreadPool(numberOfTests)
+    val counter = AtomicInteger(1)
+
     println("__ Hello in the Constraint Satisfaction Problem __")
 
     val reader: GameReader<out Game> =
@@ -48,17 +53,20 @@ fun main(args: Array<String>) {
     SolverStrategy.values().forEach { solver ->
         ValueSelectorStrategy.values().forEach { selector ->
 
-            println("Solver:  ${solver.name}")
-            println("Value selector: ${selector.name}")
-            println()
+            executor.execute {
+                val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
+                        game,
+                        solver.solver,
+                        selector.boardPointSelector
+                )
 
-            val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
-                    game,
-                    solver.solver,
-                    selector.boardPointSelector
-            )
-
-            println(solutionDescription)
+                println("Solver:  ${solver.name}")
+                println("Value selector: ${selector.name}")
+                println()
+                println(solutionDescription)
+                if (counter.incrementAndGet() == 6)
+                    executor.shutdown()
+            }
         }
     }
 }

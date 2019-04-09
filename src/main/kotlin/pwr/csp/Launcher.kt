@@ -6,6 +6,7 @@ import pwr.csp.algorithm.Solver
 import pwr.csp.algorithm.BacktrackingSolver
 import pwr.csp.algorithm.heuristic.MostConstrainedBoardPointSelector
 import pwr.csp.algorithm.heuristic.BoardPointSelector
+import pwr.csp.algorithm.heuristic.RandomBoardPointSelector
 import pwr.csp.games.Game
 import pwr.csp.reader.FutushikiReader
 import pwr.csp.reader.GameReader
@@ -25,6 +26,7 @@ private enum class SolverStrategy(val solver: Solver) {
 
 private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelector) {
     MOST_CONSTRAINED(MostConstrainedBoardPointSelector()),
+    RANDOM(RandomBoardPointSelector()),
 }
 
 fun main(args: Array<String>) {

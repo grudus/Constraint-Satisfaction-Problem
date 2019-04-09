@@ -3,9 +3,9 @@ package pwr.csp.algorithm.heuristic
 import pwr.csp.commons.BoardPoint
 import pwr.csp.games.Game
 
-class MostConstrainedValueSelector : ValueSelector {
+class MostConstrainedBoardPointSelector : BoardPointSelector {
 
-    override fun selectValue(game: Game): BoardPoint =
+    override fun select(game: Game): BoardPoint =
             game.getBoardWithPossibleValues().entries
                     .filter { (_, values) -> values.size > 1 }
                     .minBy { (_, values) -> values.size }

@@ -14,7 +14,7 @@ data class SolutionDescription(
         totalMoves++
     }
 
-    fun addSolution(game: Game) = apply {
+    fun withNewSolution(game: Game) = apply {
         if (movesToFirstSolution == null)
             movesToFirstSolution = totalMoves
         numberOfSolutions++

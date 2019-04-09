@@ -2,7 +2,7 @@ package pwr.csp
 
 import pwr.csp.algorithm.SolutionDescription
 import pwr.csp.algorithm.Solver
-import pwr.csp.algorithm.heuristic.ValueSelector
+import pwr.csp.algorithm.heuristic.BoardPointSelector
 import pwr.csp.games.Game
 
 object GameSolutionsFinder {
@@ -10,8 +10,8 @@ object GameSolutionsFinder {
     fun findSolutions(
             game: Game,
             solver: Solver,
-            valueSelector: ValueSelector
+            boardPointSelector: BoardPointSelector
     ): SolutionDescription =
-            solver.solveAndMeasureTime(game, valueSelector)
+            solver.solveAndMeasureTime(game, boardPointSelector)
 
 }

@@ -3,15 +3,14 @@ package pwr.csp
 import pwr.csp.algorithm.ForwardCheckingSolver
 import pwr.csp.algorithm.SolutionDescription
 import pwr.csp.algorithm.Solver
-import pwr.csp.algorithm.heuristic.BacktrackingSolver
-import pwr.csp.algorithm.heuristic.MostConstrainedValueSelector
-import pwr.csp.algorithm.heuristic.ValueSelector
+import pwr.csp.algorithm.BacktrackingSolver
+import pwr.csp.algorithm.heuristic.MostConstrainedBoardPointSelector
+import pwr.csp.algorithm.heuristic.BoardPointSelector
 import pwr.csp.games.Game
 import pwr.csp.reader.FutushikiReader
 import pwr.csp.reader.GameReader
 import pwr.csp.reader.SudokuReader
 import java.io.File
-import java.util.*
 import java.util.Arrays.toString
 
 private enum class GameStrategy(val reader: GameReader<out Game>) {
@@ -24,8 +23,8 @@ private enum class SolverStrategy(val solver: Solver) {
     BACKTRACKING(BacktrackingSolver()),
 }
 
-private enum class ValueSelectorStrategy(val valueSelector: ValueSelector) {
-    MOST_CONSTRAINED(MostConstrainedValueSelector()),
+private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelector) {
+    MOST_CONSTRAINED(MostConstrainedBoardPointSelector()),
 }
 
 fun main(args: Array<String>) {
@@ -42,7 +41,7 @@ fun main(args: Array<String>) {
 
     val reader = GameStrategy.valueOf(args[0]).reader
     val solver = SolverStrategy.valueOf(args[1]).solver
-    val valueSelector = ValueSelectorStrategy.valueOf(args[2]).valueSelector
+    val valueSelector = ValueSelectorStrategy.valueOf(args[2]).boardPointSelector
     val file = File(args[3])
 
     val game: Game = reader.read(file)

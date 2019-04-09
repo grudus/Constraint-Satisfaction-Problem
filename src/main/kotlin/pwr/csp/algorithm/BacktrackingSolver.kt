@@ -1,18 +1,18 @@
 package pwr.csp.algorithm
 
 import pwr.csp.algorithm.heuristic.BoardPointSelector
-import pwr.csp.commons.BoardPoint
 import pwr.csp.games.Game
 
-class ForwardCheckingSolver : Solver {
+class BacktrackingSolver : Solver {
 
     override fun solve(game: Game, boardPointSelector: BoardPointSelector): SolutionDescription {
-        return search(game.eliminateInconsistentValues(), boardPointSelector, SolutionDescription())
+        return search(game, boardPointSelector, SolutionDescription())
     }
 
     private fun search(game: Game, boardPointSelector: BoardPointSelector, solutionDescription: SolutionDescription): SolutionDescription {
-        if (!game.isBoardValid())
+        if (!game.isBoardValid()) {
             return solutionDescription
+        }
 
         if (game.isCompleted()) {
             return solutionDescription.withNewSolution(game)
@@ -21,7 +21,7 @@ class ForwardCheckingSolver : Solver {
         val boardPoint = boardPointSelector.select(game)
 
         game.findPossibleValues(boardPoint).forEach { value ->
-            val updatedGame = game.update(boardPoint, value).eliminateInconsistentValues()
+            val updatedGame = game.update(boardPoint, value)
 
             search(updatedGame, boardPointSelector, solutionDescription.addMove())
         }

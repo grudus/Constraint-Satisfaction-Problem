@@ -3,6 +3,7 @@ package pwr.csp
 import pwr.csp.algorithm.ForwardCheckingSolver
 import pwr.csp.algorithm.SolutionDescription
 import pwr.csp.algorithm.Solver
+import pwr.csp.algorithm.heuristic.BacktrackingSolver
 import pwr.csp.algorithm.heuristic.MostConstrainedValueSelector
 import pwr.csp.algorithm.heuristic.ValueSelector
 import pwr.csp.games.Game
@@ -15,15 +16,16 @@ import java.util.Arrays.toString
 
 private enum class GameStrategy(val reader: GameReader<out Game>) {
     SUDOKU(SudokuReader()),
-    FUTOSHIKI(FutushikiReader())
+    FUTOSHIKI(FutushikiReader()),
 }
 
 private enum class SolverStrategy(val solver: Solver) {
-    FORWARD_CHECKING(ForwardCheckingSolver())
+    FORWARD_CHECKING(ForwardCheckingSolver()),
+    BACKTRACKING(BacktrackingSolver()),
 }
 
 private enum class ValueSelectorStrategy(val valueSelector: ValueSelector) {
-    MOST_CONSTRAINED(MostConstrainedValueSelector())
+    MOST_CONSTRAINED(MostConstrainedValueSelector()),
 }
 
 fun main(args: Array<String>) {

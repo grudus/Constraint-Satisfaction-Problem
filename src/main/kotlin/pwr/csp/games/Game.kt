@@ -11,4 +11,5 @@ interface Game {
     fun findPossibleValues(boardPoint: BoardPoint): List<Int>
     fun eliminateInconsistentValues(): Game
     fun getBoardWithPossibleValues(): Board<List<Int>>
+    fun findPeers(boardPoint: BoardPoint): List<BoardPoint>
 }

@@ -46,7 +46,7 @@ data class Sudoku(private val board: Board<List<Int>>,
         return this.copy(board = mutableBoard)
     }
 
-    private fun findPeers(boardPoint: BoardPoint): List<BoardPoint> {
+    override fun findPeers(boardPoint: BoardPoint): List<BoardPoint> {
         val rowColPeers = board.keys.filter { it.row == boardPoint.row || it.col == boardPoint.col }
         val square = squares.find { it.contains(boardPoint) }!!
 

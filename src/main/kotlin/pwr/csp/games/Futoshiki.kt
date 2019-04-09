@@ -48,6 +48,9 @@ data class Futoshiki(private var board: Board<List<Int>>,
         }
     }
 
+    override fun findPeers(boardPoint: BoardPoint): List<BoardPoint> =
+            board.keys.filter { it.row == boardPoint.row || it.col == boardPoint.col } - boardPoint
+
     private fun boardHasUniqueValues(): Boolean =
             board
                     .filterValues { it.size == 1 }
@@ -66,8 +69,4 @@ data class Futoshiki(private var board: Board<List<Int>>,
                     board.getValue(greater)[0] > board.getValue(smaller)[0]
                 else true
             }
-
-
-    private fun findPeers(boardPoint: BoardPoint): List<BoardPoint> =
-            board.keys.filter { it.row == boardPoint.row || it.col == boardPoint.col } - boardPoint
 }

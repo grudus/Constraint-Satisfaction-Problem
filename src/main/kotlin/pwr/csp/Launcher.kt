@@ -45,8 +45,8 @@ fun main(args: Array<String>) {
 
     println("Results for file: $file")
 
-    SolverStrategy.values().forEach { solver ->
-        ValueSelectorStrategy.values().forEach { selector ->
+    ValueSelectorStrategy.values().forEach { selector ->
+        SolverStrategy.values().forEach { solver ->
 
             println("Solver:  ${solver.name}")
             println("Value selector: ${selector.name}")

@@ -1,7 +1,7 @@
 language: java
 
 env:
-  - GAME=./res/research_data/futoshiki/test_futo_0_0.txt
+  - GAME=./res/test_data/futoshiki/futoshiki_0_0.txt
   - GAME=./res/research_data/futoshiki/test_futo_4_0.txt
   - GAME=./res/research_data/futoshiki/test_futo_4_1.txt
   - GAME=./res/research_data/futoshiki/test_futo_4_2.txt

@@ -25,6 +25,8 @@ data class SolutionDescription(
         totalSeconds = seconds
     }
 
+    fun solutions(): List<Game> = solutions
+
     override fun toString(): String {
         return "Number of solutions: $numberOfSolutions\n" +
                 "Total time in seconds: $totalSeconds\n" +

@@ -44,7 +44,9 @@ fun main(args: Array<String>) {
     val game: Game = reader.read(file)
 
     println("Results for file: $file")
-
+    println("\n")
+    game.printBoard()
+    println("\n\n")
 
     ValueSelectorStrategy.values().forEach { selector ->
         SolverStrategy.values().forEach { solver ->
@@ -60,6 +62,11 @@ fun main(args: Array<String>) {
             )
 
             println(solutionDescription)
+
+            solutionDescription.solutions().forEach {
+                it.printBoard()
+            }
+            println("\n\n")
         }
     }
 }

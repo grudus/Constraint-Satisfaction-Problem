@@ -1,0 +1,39 @@
+language: java
+
+env:
+  - GAME=./res/research_data/futoshiki/test_futo_0_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_4_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_4_1.txt
+  - GAME=./res/research_data/futoshiki/test_futo_4_2.txt
+  - GAME=./res/research_data/futoshiki/test_futo_5_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_5_1.txt
+  - GAME=./res/research_data/futoshiki/test_futo_5_2.txt
+  - GAME=./res/research_data/futoshiki/test_futo_6_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_6_1.txt
+  - GAME=./res/research_data/futoshiki/test_futo_6_2.txt
+  - GAME=./res/research_data/futoshiki/test_futo_7_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_7_1.txt
+  - GAME=./res/research_data/futoshiki/test_futo_7_2.txt
+  - GAME=./res/research_data/futoshiki/test_futo_8_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_8_1.txt
+  - GAME=./res/research_data/futoshiki/test_futo_8_2.txt
+  - GAME=./res/research_data/futoshiki/test_futo_9_0.txt
+  - GAME=./res/research_data/futoshiki/test_futo_9_1.txt
+  - GAME=./res/research_data/futoshiki/test_futo_9_2.txt
+  - GAME=./res/test_data/sudoku/test_1
+  - GAME=./res/test_data/sudoku/test_2
+  - GAME=./res/test_data/sudoku/test_3
+  - GAME=./res/test_data/sudoku/test_4
+  - GAME=./res/test_data/sudoku/test_5
+  - GAME=./res/test_data/sudoku/test_6
+  - GAME=./res/test_data/sudoku/test_7
+  - GAME=./res/test_data/sudoku/test_8
+  - GAME=./res/test_data/sudoku/test_9
+  - GAME=./res/test_data/sudoku/test_11
+  - GAME=./res/test_data/sudoku/test_12
+  - GAME=./res/test_data/sudoku/test_13
+  - GAME=./res/test_data/sudoku/test_14
+  - GAME=./res/test_data/sudoku/test_15
+
+
+script: "java -jar result.jar $GAME"

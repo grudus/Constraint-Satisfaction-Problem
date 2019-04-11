@@ -8,6 +8,7 @@ import pwr.csp.algorithm.heuristic.MostConstrainedBoardPointSelector
 import pwr.csp.algorithm.heuristic.BoardPointSelector
 import pwr.csp.algorithm.heuristic.MostLimitingBoardPointSelector
 import pwr.csp.algorithm.heuristic.RandomBoardPointSelector
+import pwr.csp.games.Futoshiki
 import pwr.csp.games.Game
 import pwr.csp.games.PossibleValuesGame
 import pwr.csp.reader.FutoshikiReader
@@ -24,7 +25,6 @@ private enum class SolverStrategy(val solver: Solver) {
 private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelector) {
     MOST_CONSTRAINED(MostConstrainedBoardPointSelector()),
     MOST_LIMITING(MostLimitingBoardPointSelector()),
-    RANDOM(RandomBoardPointSelector()),
 }
 
 fun main(args: Array<String>) {
@@ -44,6 +44,7 @@ fun main(args: Array<String>) {
     val game: Game = reader.read(file)
 
     println("Results for file: $file")
+
 
     ValueSelectorStrategy.values().forEach { selector ->
         SolverStrategy.values().forEach { solver ->

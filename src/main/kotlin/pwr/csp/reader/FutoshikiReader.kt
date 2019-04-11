@@ -17,6 +17,7 @@ class FutoshikiReader : GameReader<Futoshiki> {
                 .map { row -> row.split(";").map(String::toInt) }
 
         val relations = lines.drop(3 + boardSize)
+                .filter { !it.isBlank() }
                 .map { row -> row.split(";").map { BoardPoint(it) } }
                 .map { GreaterThanRelation(it[1], it[0]) }
 

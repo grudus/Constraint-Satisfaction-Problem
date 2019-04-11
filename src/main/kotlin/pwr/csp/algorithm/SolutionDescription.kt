@@ -12,6 +12,8 @@ data class SolutionDescription(
 
     fun addMove() = apply {
         totalMoves++
+        if (totalMoves % 100_000 == 0)
+            println("Moves: $totalMoves")
     }
 
     fun withNewSolution(game: Game) = apply {

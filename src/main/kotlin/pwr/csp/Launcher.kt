@@ -32,13 +32,9 @@ private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelec
 }
 
 
-val numberOfExecutions = ValueSelectorStrategy.values().size + SolverStrategy.values().size
-val executor = Executors.newFixedThreadPool(numberOfExecutions)!!
-val counter = AtomicInteger(1)
-
 fun main(args: Array<String>) {
-    if (args.isEmpty()) {
-        println("Specify input file with puzzle to solve")
+    if (args.size < 3) {
+        println("Specify input file with puzzle to solve and SolverStrategy and ValueSelectorStrategy")
         return
     }
 
@@ -52,35 +48,27 @@ fun main(args: Array<String>) {
     val file = File(args[0])
     val game: Game = reader.read(file)
 
+    val solver = SolverStrategy.valueOf(args[1])
+    val selector = ValueSelectorStrategy.valueOf(args[2])
+
     println("Results for file: $file")
+    println("Using solver strategy $solver")
+    println("Using value selector strategy $selector")
     println("\n")
     game.printBoard()
     println("\n\n")
 
-    ValueSelectorStrategy.values().forEach { selector ->
-        SolverStrategy.values().forEach { solver ->
 
-            executor.execute {
+    val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
+            game,
+            solver.solver,
+            selector.boardPointSelector
+    )
+    
+    println(solutionDescription)
 
-                val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
-                        game,
-                        solver.solver,
-                        selector.boardPointSelector
-                )
-
-                println("Solver:  ${solver.name}")
-                println("Value selector: ${selector.name}")
-                println()
-                println(solutionDescription)
-
-                solutionDescription.solutions().forEach {
-                    it.printBoard()
-                }
-                println("\n\n")
-                if (counter.getAndIncrement() == numberOfExecutions)
-                    executor.shutdown()
-            }
-
-        }
+    solutionDescription.solutions().forEach {
+        it.printBoard()
     }
+
 }

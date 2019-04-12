@@ -8,43 +8,67 @@ branches:
   only:
     - master
     - maven
+    - hard
 
 env:
-  - GAME=./res/test_data/futoshiki/futoshiki_0_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_4_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_4_1.txt
-  - GAME=./res/test_data/sudoku/test_1
-  - GAME=./res/research_data/futoshiki/test_futo_4_2.txt
-  - GAME=./res/research_data/futoshiki/test_futo_5_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_5_1.txt
-  - GAME=./res/research_data/futoshiki/test_futo_5_2.txt
-  - GAME=./res/research_data/futoshiki/test_futo_6_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_6_1.txt
-  - GAME=./res/research_data/futoshiki/test_futo_6_2.txt
-  - GAME=./res/research_data/futoshiki/test_futo_7_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_7_1.txt
-  - GAME=./res/research_data/futoshiki/test_futo_7_2.txt
-  - GAME=./res/research_data/futoshiki/test_futo_8_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_8_1.txt
-  - GAME=./res/research_data/futoshiki/test_futo_8_2.txt
-  - GAME=./res/research_data/futoshiki/test_futo_9_0.txt
-  - GAME=./res/research_data/futoshiki/test_futo_9_1.txt
-  - GAME=./res/research_data/futoshiki/test_futo_9_2.txt
-  - GAME=./res/test_data/sudoku/test_2
-  - GAME=./res/test_data/sudoku/test_3
-  - GAME=./res/test_data/sudoku/test_4
-  - GAME=./res/test_data/sudoku/test_5
-  - GAME=./res/test_data/sudoku/test_6
-  - GAME=./res/test_data/sudoku/test_7
-  - GAME=./res/test_data/sudoku/test_8
-  - GAME=./res/test_data/sudoku/test_9
-  - GAME=./res/test_data/sudoku/test_11
-  - GAME=./res/test_data/sudoku/test_12
-  - GAME=./res/test_data/sudoku/test_13
-  - GAME=./res/test_data/sudoku/test_14
-  - GAME=./res/test_data/sudoku/test_15
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_0.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_0.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_0.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_0.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_1.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_1.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_1.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_1.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_2.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_2.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_2.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_7_2.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_0.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_0.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_0.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_0.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_1.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_1.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_1.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_1.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_2.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_2.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_2.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_8_2.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_0.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_0.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_0.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_0.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_1.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_1.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_1.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_1.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_2.txt FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_2.txt FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_2.txt BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/research_data/futoshiki/test_futo_9_2.txt BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_1 FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_1 FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_1 BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_1 BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_2 FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_2 FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_2 BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_2 BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_3 FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_3 FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_3 BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_3 BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_4 FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_4 FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_4 BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_4 BACKTRACKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_5 FORWARD_CHECKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_5 FORWARD_CHECKING MOST_LIMITING
+  - PARAMS=./res/test_data/sudoku/test_5 BACKTRACKING MOST_CONSTRAINED
+  - PARAMS=./res/test_data/sudoku/test_5 BACKTRACKING MOST_LIMITING
 
 
 prescript: "mvn clean install"
 
-script: "java -jar target/GameSolver.jar $GAME"
+script: "java -jar target/GameSolver.jar $PARAMS"

@@ -1,5 +1,14 @@
 language: java
 
+cache:
+  directories:
+    - $HOME/.m2
+
+branches:
+  only:
+    - master
+    - maven
+
 env:
   - GAME=./res/test_data/futoshiki/futoshiki_0_0.txt
   - GAME=./res/research_data/futoshiki/test_futo_4_0.txt
@@ -36,4 +45,6 @@ env:
   - GAME=./res/test_data/sudoku/test_15
 
 
-script: "java -jar result.jar $GAME"
+prescript: "mvn clean install"
+
+script: "java -jar target/GameSolver.jar $GAME"

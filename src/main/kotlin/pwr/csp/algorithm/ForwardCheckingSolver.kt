@@ -23,7 +23,11 @@ class ForwardCheckingSolver : Solver {
         game.findPossibleValues(boardPoint).forEach { value ->
             val updatedGame = game.update(boardPoint, value).eliminateInconsistentValues()
 
-            search(updatedGame, boardPointSelector, solutionDescription.addMove())
+            val result = search(updatedGame, boardPointSelector, solutionDescription.addMove())
+
+            if (result.solutions().isNotEmpty()) {
+                return result
+            }
         }
 
         return solutionDescription

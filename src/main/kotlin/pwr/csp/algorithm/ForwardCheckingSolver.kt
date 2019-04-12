@@ -12,7 +12,7 @@ class ForwardCheckingSolver : Solver {
 
     private fun search(game: Game, boardPointSelector: BoardPointSelector, solutionDescription: SolutionDescription): SolutionDescription {
         if (!game.isBoardValid())
-            return solutionDescription
+            return solutionDescription.withNewReturn()
 
         if (game.isCompleted()) {
             return solutionDescription.withNewSolution(game)

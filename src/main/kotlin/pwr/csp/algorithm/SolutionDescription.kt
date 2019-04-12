@@ -7,6 +7,7 @@ data class SolutionDescription(
         private var totalMoves: Int = 0,
         private var numberOfSolutions: Int = 0,
         private var totalSeconds: Double = 0.0,
+        private var numberOfReturns: Int = 0,
         private val solutions: MutableList<Game> = mutableListOf()
 ) {
 
@@ -14,6 +15,10 @@ data class SolutionDescription(
         totalMoves++
         if (totalMoves % 100_000 == 0)
             println("Moves: $totalMoves")
+    }
+
+    fun withNewReturn() = apply {
+        numberOfReturns++
     }
 
     fun withNewSolution(game: Game) = apply {
@@ -33,6 +38,7 @@ data class SolutionDescription(
         return "Number of solutions: $numberOfSolutions\n" +
                 "Total time in seconds: $totalSeconds\n" +
                 "Moves to first solution: $movesToFirstSolution\n" +
-                "Total moves: $totalMoves\n"
+                "Total moves: $totalMoves\n" +
+                "Number of returns: $numberOfReturns\n"
     }
 }

@@ -16,6 +16,10 @@ import pwr.csp.reader.GameReader
 import pwr.csp.reader.SudokuReader
 import java.io.File
 import java.util.Arrays.toString
+import java.util.concurrent.Executors
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.atomic.AtomicInteger
+
 
 private enum class SolverStrategy(val solver: Solver) {
     FORWARD_CHECKING(ForwardCheckingSolver()),
@@ -26,6 +30,11 @@ private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelec
     MOST_CONSTRAINED(MostConstrainedBoardPointSelector()),
     MOST_LIMITING(MostLimitingBoardPointSelector()),
 }
+
+
+val numberOfExecutions = ValueSelectorStrategy.values().size + SolverStrategy.values().size
+val executor = Executors.newFixedThreadPool(numberOfExecutions)!!
+val counter = AtomicInteger(1)
 
 fun main(args: Array<String>) {
     if (args.isEmpty()) {
@@ -51,22 +60,27 @@ fun main(args: Array<String>) {
     ValueSelectorStrategy.values().forEach { selector ->
         SolverStrategy.values().forEach { solver ->
 
-            println("Solver:  ${solver.name}")
-            println("Value selector: ${selector.name}")
-            println()
+            executor.execute {
 
-            val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
-                    game,
-                    solver.solver,
-                    selector.boardPointSelector
-            )
+                val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
+                        game,
+                        solver.solver,
+                        selector.boardPointSelector
+                )
 
-            println(solutionDescription)
+                println("Solver:  ${solver.name}")
+                println("Value selector: ${selector.name}")
+                println()
+                println(solutionDescription)
 
-            solutionDescription.solutions().forEach {
-                it.printBoard()
+                solutionDescription.solutions().forEach {
+                    it.printBoard()
+                }
+                println("\n\n")
+                if (counter.getAndIncrement() == numberOfExecutions)
+                    executor.shutdown()
             }
-            println("\n\n")
+
         }
     }
 }

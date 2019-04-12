@@ -15,6 +15,7 @@ import pwr.csp.reader.FutoshikiReader
 import pwr.csp.reader.GameReader
 import pwr.csp.reader.SudokuReader
 import java.io.File
+import java.lang.IllegalArgumentException
 import java.util.Arrays.toString
 import java.util.concurrent.Executors
 import java.util.concurrent.ExecutorService
@@ -34,8 +35,7 @@ private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelec
 
 fun main(args: Array<String>) {
     if (args.size < 3) {
-        println("Specify input file with puzzle to solve and SolverStrategy and ValueSelectorStrategy")
-        return
+        throw IllegalArgumentException("Specify input file with puzzle to solve and SolverStrategy and ValueSelectorStrategy")
     }
 
     println("__ Hello in the Constraint Satisfaction Problem __")
@@ -64,7 +64,7 @@ fun main(args: Array<String>) {
             solver.solver,
             selector.boardPointSelector
     )
-    
+
     println(solutionDescription)
 
     solutionDescription.solutions().forEach {

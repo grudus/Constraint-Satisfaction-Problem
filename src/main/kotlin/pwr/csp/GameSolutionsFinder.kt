@@ -10,8 +10,9 @@ object GameSolutionsFinder {
     fun findSolutions(
             game: Game,
             solver: Solver,
-            boardPointSelector: BoardPointSelector
+            boardPointSelector: BoardPointSelector,
+            searchAll: Boolean
     ): SolutionDescription =
-            solver.solveAndMeasureTime(game, boardPointSelector)
+            solver.solveAndMeasureTime(game, boardPointSelector, searchAll)
 
 }

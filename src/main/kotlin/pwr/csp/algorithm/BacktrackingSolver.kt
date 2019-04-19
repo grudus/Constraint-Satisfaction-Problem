@@ -5,11 +5,11 @@ import pwr.csp.games.Game
 
 class BacktrackingSolver : Solver {
 
-    override fun solve(game: Game, boardPointSelector: BoardPointSelector): SolutionDescription {
-        return search(game, boardPointSelector, SolutionDescription())
+    override fun solve(game: Game, boardPointSelector: BoardPointSelector, searchAll: Boolean): SolutionDescription {
+        return search(game, boardPointSelector, SolutionDescription(), searchAll)
     }
 
-    private fun search(game: Game, boardPointSelector: BoardPointSelector, solutionDescription: SolutionDescription): SolutionDescription {
+    private fun search(game: Game, boardPointSelector: BoardPointSelector, solutionDescription: SolutionDescription, searchAll: Boolean): SolutionDescription {
         if (!game.isBoardValid()) {
             return solutionDescription.withNewReturn()
         }
@@ -23,8 +23,8 @@ class BacktrackingSolver : Solver {
         game.findPossibleValues(boardPoint).forEach { value ->
             val updatedGame = game.update(boardPoint, value)
 
-            val result = search(updatedGame, boardPointSelector, solutionDescription.addMove())
-            if (result.solutions().isNotEmpty()) {
+            val result = search(updatedGame, boardPointSelector, solutionDescription.addMove(), searchAll)
+            if (!searchAll && result.solutions().isNotEmpty()) {
                 return result
             }
         }

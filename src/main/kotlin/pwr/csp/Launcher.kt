@@ -51,9 +51,16 @@ fun main(args: Array<String>) {
     val solver = SolverStrategy.valueOf(args[1])
     val selector = ValueSelectorStrategy.valueOf(args[2])
 
+    val searchAll = try {
+        args[3].toBoolean()
+    } catch (e: Exception) {
+        true
+    }
+
     println("Results for file: $file")
     println("Using solver strategy $solver")
     println("Using value selector strategy $selector")
+    println("Searching all: $searchAll")
     println("\n")
     game.printBoard()
     println("\n\n")
@@ -62,7 +69,8 @@ fun main(args: Array<String>) {
     val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
             game,
             solver.solver,
-            selector.boardPointSelector
+            selector.boardPointSelector,
+            searchAll
     )
 
     println(solutionDescription)

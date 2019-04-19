@@ -11,6 +11,10 @@ branches:
     - hard
 
 env:
+  - FILE=./res/research_data/sudoku/hard_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/hard_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/hard_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/hard_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
   - FILE=./res/test_data/sudoku/test_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
   - FILE=./res/test_data/sudoku/test_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
   - FILE=./res/test_data/sudoku/test_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED

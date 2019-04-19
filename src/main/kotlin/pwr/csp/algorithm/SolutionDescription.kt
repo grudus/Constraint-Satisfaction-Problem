@@ -26,6 +26,8 @@ data class SolutionDescription(
             movesToFirstSolution = totalMoves
         numberOfSolutions++
         solutions += game
+
+        println("Found $numberOfSolutions. solution in the $totalMoves move")
     }
 
     fun withExecutionTime(seconds: Double) = apply {

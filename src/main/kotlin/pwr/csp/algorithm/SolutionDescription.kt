@@ -27,7 +27,10 @@ data class SolutionDescription(
         numberOfSolutions++
         solutions += game
 
-        println("Found $numberOfSolutions. solution in the $totalMoves move")
+        if (numberOfSolutions % 5000 == 0) {
+            println("Found $numberOfSolutions. solution in the $totalMoves move")
+            game.printBoard()
+        }
     }
 
     fun withExecutionTime(seconds: Double) = apply {

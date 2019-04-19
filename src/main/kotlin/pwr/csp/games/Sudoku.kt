@@ -11,9 +11,12 @@ data class Sudoku(private val board: Board<List<Int>>,
             board.filter { (_, possibleValues) -> possibleValues.size == 1 }
                     .mapValues { it.value[0] }
                     .all { (boardPoint, value) ->
-                        val peers = findPeers(boardPoint)
 
-                        return peers.none { board.getValue(it)[0] == value }
+                        findPeers(boardPoint)
+                                .map { board.getValue(it) }
+                                .filter { it.size == 1 }
+                                .map { it[0] }
+                                .none { peerValue -> peerValue == value }
                     }
 
 

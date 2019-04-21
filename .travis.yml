@@ -9,109 +9,33 @@ branches:
     - master
     - maven
     - hard
+    - sudoku
 
 env:
-  - FILE=./res/test_data/sudoku/test_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_3 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_3 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_3 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_3 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_4 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_4 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_4 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_4 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_5 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_5 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/test_data/sudoku/test_5 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/test_data/sudoku/test_5 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-
-
-  - FILE=./res/research_data/futoshiki/test_futo_4_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_4_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_4_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_4_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_4_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_4_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_4_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_4_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_4_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_4_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_4_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_4_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-
-
-  - FILE=./res/research_data/futoshiki/test_futo_5_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_5_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_5_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_5_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_5_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_5_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_5_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_5_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_5_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_5_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_5_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_5_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-
-
-  - FILE=./res/research_data/futoshiki/test_futo_6_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_6_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_6_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_6_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_6_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_6_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_6_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_6_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_6_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_6_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_6_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_6_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-
-
-  - FILE=./res/research_data/futoshiki/test_futo_7_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_7_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_7_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_7_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_7_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_7_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_7_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_7_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_7_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_7_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_7_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_7_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_8_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_8_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_8_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_8_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_8_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_8_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_8_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_8_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_8_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_8_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_8_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_8_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_9_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_9_0.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_9_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_9_0.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_9_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_9_1.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_9_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_9_1.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_9_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_9_2.txt SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/futoshiki/test_futo_9_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/futoshiki/test_futo_9_2.txt SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-
+  - FILE=./res/research_data/sudoku/easy_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/easy_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/easy_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/easy_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/easy_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/easy_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/easy_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/easy_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/medium_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/medium_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/medium_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/medium_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/medium_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/medium_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/medium_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/medium_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/hard_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/hard_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/hard_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/hard_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/hard_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/hard_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/hard_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/hard_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
 
 prescript: "mvn clean install"
 

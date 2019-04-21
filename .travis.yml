@@ -12,30 +12,18 @@ branches:
     - sudoku
 
 env:
-  - FILE=./res/research_data/sudoku/easy_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/easy_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/easy_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/easy_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/easy_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/easy_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/easy_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/easy_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/medium_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/medium_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/medium_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/medium_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/medium_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/medium_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/medium_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/medium_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/hard_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/hard_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/hard_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/hard_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/hard_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/hard_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
-  - FILE=./res/research_data/sudoku/hard_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
-  - FILE=./res/research_data/sudoku/hard_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/very_hard_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/very_hard_1 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/very_hard_1 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/very_hard_1 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/very_hard_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/very_hard_2 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/very_hard_2 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/very_hard_2 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/very_hard_3 SOLVER=FORWARD_CHECKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/very_hard_3 SOLVER=FORWARD_CHECKING SELECTOR=MOST_LIMITING
+  - FILE=./res/research_data/sudoku/very_hard_3 SOLVER=BACKTRACKING SELECTOR=MOST_CONSTRAINED
+  - FILE=./res/research_data/sudoku/very_hard_3 SOLVER=BACKTRACKING SELECTOR=MOST_LIMITING
 
 prescript: "mvn clean install"
 

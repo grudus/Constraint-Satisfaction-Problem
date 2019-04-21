@@ -34,20 +34,49 @@ private enum class ValueSelectorStrategy(val boardPointSelector: BoardPointSelec
 
 
 fun main(args: Array<String>) {
+    if (args.size < 3) {
+        throw IllegalArgumentException("Specify input file with puzzle to solve and SolverStrategy and ValueSelectorStrategy")
+    }
 
-    val game = SudokuReader().read(File("res/research_data/sudoku/medium_1"))
+    println("__ Hello in the Constraint Satisfaction Problem __")
 
-    SolverStrategy.values().forEach { solver ->
-        ValueSelectorStrategy.values().forEach { selector ->
-            val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
-                    game,
-                    solver.solver,
-                    selector.boardPointSelector,
-                    true
-            )
+    val reader: GameReader<out Game> =
+            if (args[0].contains("udoku"))
+                SudokuReader()
+            else FutoshikiReader()
 
-            println(solutionDescription)
-        }
+    val file = File(args[0])
+    val game: Game = reader.read(file)
+
+    val solver = SolverStrategy.valueOf(args[1])
+    val selector = ValueSelectorStrategy.valueOf(args[2])
+
+    val searchAll = try {
+        args[3].toBoolean()
+    } catch (e: Exception) {
+        true
+    }
+
+    println("Results for file: $file")
+    println("Using solver strategy $solver")
+    println("Using value selector strategy $selector")
+    println("Searching all: $searchAll")
+    println("\n")
+    game.printBoard()
+    println("\n\n")
+
+
+    val solutionDescription: SolutionDescription = GameSolutionsFinder.findSolutions(
+            game,
+            solver.solver,
+            selector.boardPointSelector,
+            searchAll
+    )
+
+    println(solutionDescription)
+
+    solutionDescription.solutions().forEach {
+        it.printBoard()
     }
 
 }
